@@ -9,39 +9,43 @@ namespace projEncapsulation
 {
     public class BeerEncapsulator
     {
-        public BeerEncapsulator(int avalaibleBottles, double avalaibleBeerVolume, int avalaibleCapsules)
+        private double avalaibleBeerVolume;
+        private int avalaibleBottles;
+        private int avalaibleCapsules;
+        public BeerEncapsulator(int _avalaibleBottles, double _avalaibleBeerVolume, int _avalaibleCapsules)
         {
-        private int _avalaibleBeerVolume;
-        int avalaibleBottles;
-        private int _avalaibleBottles = 15;
-        private int _avalaibleCapsule = 15;
-        public string wantedBottle = "";
-        public bool myBooleen = false;
+            double avalaibleBeerVolume=_avalaibleBeerVolume;
+            int avalaibleBottles=_avalaibleBottles;
+            int avalaibleCapsules=_avalaibleCapsules;
         }
-    
-
         public double GetAvalableBeerVolume()
         {
-            return _avalaibleBeerVolume;
+            return avalaibleBeerVolume;
         }
         public int GetAvailableBottles()
-        {  
-            return _avalaibleBottles; 
+        {
+            return avalaibleBottles;
         }
 
         public double AdBeer()
         {
-         Console.WriteLine("Combien de volumes en centililtres, voulez vous ?");
-          string stringX=Console.ReadLine();
-          double x=double.Parse(stringX);
-         _avalaibleBeerVolume = Math.Round(_avalaibleBeerVolume + x*0.33,2);
-          return _avalaibleBeerVolume;
-          }
-
+            Console.WriteLine("Combien de volumes en centililtres, voulez vous ?");
+            string stringX = Console.ReadLine();
+            double x = double.Parse(stringX);
+            avalaibleBeerVolume = Math.Round(avalaibleBeerVolume + x * 0.33, 2);
+            return avalaibleBeerVolume;
         }
 
- }       
+        public void ProduceEncapsulatedBeer()
+        {
+            //Maintenant le plus dire et a faire
+            //une partie mise en bouteille et encapule
+        }
+    }
+
 }
+
+    
 
 
 

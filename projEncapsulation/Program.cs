@@ -1,6 +1,7 @@
 ﻿using projEncapsulation;
 using System;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 
 
@@ -8,25 +9,27 @@ class MainProgram
 {
     public static void Main(string[] args)
     {
-        
-        Console.WriteLine(" Combien de bouteilles, voulez vous ? ");
-        string stringLitresBeer = Console.ReadLine(); 
-        int litresBeer = Math.Abs(Int32.Parse(stringLitresBeer));
-        
 
-        Console.WriteLine(" Combien de bouteilles vides, avez vous ? ");
+        Console.Write("Veuillez entrer le nombre de litres. ");
+        string stringLitresBeer = Console.ReadLine();
+        int litresBeer = Convert.ToInt32(stringLitresBeer);
+
+        Console.WriteLine(" Veuillez entrer le nombre de bouteilles vides.  ");
         string stringEmptyBottles = Console.ReadLine();
-        int emptyBottles = Math.Abs(Int32.Parse(stringEmptyBottles));
+        int emptyBottles = Convert.ToInt32(stringEmptyBottles);
 
-        Console.WriteLine("Combien de capsules, avez vous ? ");
+        Console.WriteLine("Veuillez entrer le nombre de capsules. ");
         string stringCapsules = Console.ReadLine();
-        int capsulesBottles = Math.Abs(Int32.Parse(stringEmptyBottles));
+        int capsulesBottles = Convert.ToInt32(stringCapsules);
 
-        Console.WriteLine("Combien vous en voulez ? ");
+        Console.WriteLine("Combien souhaitez vous en faire ? ");
         string stringNumbBottles = Console.ReadLine();
-        int numbBottles = Math.Abs(Int32.Parse(stringEmptyBottles));
+        int numbBottles = Convert.ToInt32(stringEmptyBottles);
 
-        BeerEncapsulator beerEncapsulator = new BeerEncapsulator(litresBeer, emptyBottles, capsulesBottles,numbBottles);
+        BeerEncapsulator beer1 = new BeerEncapsulator(litresBeer, emptyBottles, capsulesBottles, numbBottles);
+
+        beer1.ProduceEncapsulatedBeer(1);
+
 
     }
 

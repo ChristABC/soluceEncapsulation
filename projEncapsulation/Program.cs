@@ -11,26 +11,28 @@ class MainProgram
     {
 
         Console.Write("Veuillez entrer le nombre de litres. ");
-        string stringLitresBeer = Console.ReadLine();
-        int litresBeer = Convert.ToInt32(stringLitresBeer);
+        string stringVolumeBeer = Console.ReadLine();
+        double volumeBeer = double.Parse(stringVolumeBeer);
+
+        // Convertir le volume de litres en centilitres
+        decimal volumeBeerInCentilitres = (decimal)(volumeBeer * 100);
 
         Console.WriteLine(" Veuillez entrer le nombre de bouteilles vides.  ");
-        string stringEmptyBottles = Console.ReadLine();
-        int emptyBottles = Convert.ToInt32(stringEmptyBottles);
+        string stringBottles = Console.ReadLine();
+        int bottles = Convert.ToInt32(stringBottles);
 
         Console.WriteLine("Veuillez entrer le nombre de capsules. ");
         string stringCapsules = Console.ReadLine();
-        int capsulesBottles = Convert.ToInt32(stringCapsules);
+        int capsules = Convert.ToInt32(stringCapsules);
 
         Console.WriteLine("Combien souhaitez vous en faire ? ");
         string stringNumbBottles = Console.ReadLine();
-        int numbBottles = Convert.ToInt32(stringEmptyBottles);
+        int numbBottles = Convert.ToInt32(stringNumbBottles);
 
-        BeerEncapsulator beer1 = new BeerEncapsulator(litresBeer, emptyBottles, capsulesBottles, numbBottles);
+        BeerEncapsulator beer1 = new BeerEncapsulator(volumeBeerInCentilitres, bottles, capsules);
 
-        beer1.ProduceEncapsulatedBeer(1);
-
-
+        int producedBottles = beer1.ProduceEncapsulatedBeer(numbBottles);
+        
     }
 
 

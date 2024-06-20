@@ -11,91 +11,84 @@ namespace projEncapsulation
 {
     public class BeerEncapsulator
     {
-        
-        private double _availableBeerVolume;
+
+        private decimal _availableBeerVolume;
         private int _availableBottles;
         private int _availableCapsules;
-        
-        public BeerEncapsulator(double initBeerVolume, int initBottles, int initCapsules)
+
+        public BeerEncapsulator(decimal initBeerVolume, int initBottles, int initCapsules)
         {
-            double _avalaibleBeerVolume = initBeerVolume;
+            decimal _avalaibleBeerVolume = initBeerVolume;
             int _avalaibleBottles = initBottles;
             int _avalaibleCapsules = initCapsules;
-                   
+
         }
 
-
-        public static double GetAvalaibleBeerVolume(double avalaibleBeerVolume)
+        public int AvailableBottles
         {
-            double volumeBeer = avalaibleBeerVolume;
-            return volumeBeer;
+            get { return _availableBottles; }
+            set { _availableBottles = value; }
         }
 
-
-        public double AdBeer()
+        public int AvailableCapsules
         {
-            volumeBeer = volumeBeer - 0.33;
-            volumeBeer = Math.Round(volumeBeer, 2);
-            return volumeBeer;
-
+            get { return _availableCapsules; }
+            set { _availableCapsules = value; }
         }
 
-        public int BottleMoins()
+        public decimal AvailableBeerVolume
         {
-            bottlesVide = bottlesVide - 1;
-            return bottlesVide;
-
+            get { return _availableBeerVolume; }
+            set { _availableBeerVolume = value; }
         }
 
-        public int CapsulesMoins()
+        public decimal Adbeer(decimal volumeBeer)
         {
-            caps = caps - 1;
-            return caps;
-
+            _availableBeerVolume = _availableBeerVolume - 33;
+            return _availableBeerVolume;
         }
-        
+
+
         public int ProduceEncapsulatedBeer(int wantedBottles)
         {
             int produceBottles = 0;
-            const double beerParBottles = 33.0;
-            
-            while (_availableBottles > 0 && _availableCapsules > 0 && _availableBeerVolume > beerParBottles)
-            {
-                _availableBeerVolume -=beerParBottles;// equivaut à faire moins 0.33 a chaque fois
-                _availableBottles--;
-                _availableCapsules--;
-                produceBottles++;
-            }
 
-            if (_availableBeerVolume < beerParBottles )
-            {
-                Console.WriteLine("Il n'a plus assez de bière");
-                Console.WriteLine("Vous avez fabriquer  " + produceBottles + " bouteilles de bières ");
-                
-            }
 
-            else if (_availableCapsules==0)
+            while (produceBottles < wantedBottles) //On demande à la boucle while de ne pas dépacer l'ojectif
             {
-                Console.WriteLine("Il n'y a plus de capsules. ");
-                Console.WriteLine("Vous avez fabriquer  " + produceBottles + "de bouteilles de bières ");
-            }
+                if (_availableBottles > 0 && _availableCapsules > 0 && _availableBeerVolume > 33)
+                {
+                    _availableBeerVolume = _availableBeerVolume - 33;
+                    _availableBottles--;
+                    _availableCapsules--;
+                    produceBottles++;
+                }
 
-            else if (_availableBottles ==0)
-            {
-                Console.WriteLine("Il n'y a plus de bouteilles");
-                Console.WriteLine("Vous avez fabriquer " + produceBottles + "de bières ");
-            }
+                else
+                {
+                    if (_availableBeerVolume < 33)
+                    {
+                        Console.WriteLine("Il n'a plus assez de bière");
+                        Console.WriteLine("Vous avez fabriquer  " + produceBottles + " bouteilles de bières ");
+                    }
+                    else if (_availableCapsules == 0)
+                    {
+                        Console.WriteLine("Il n'y a plus de capsules. ");
+                        Console.WriteLine("Vous avez fabriquer  " + produceBottles + "de bouteilles de bières ");
+                    }
 
-            else
-            {
-                Console.WriteLine("Il n'a pas assez d'éléments pour la fabrication. ");
-             }
-            Console.WriteLine($"Vous avez fabriqué {produceBottles} bouteilles de bière.");
-            return produceBottles;
+                    else if(_availableBottles == 0)
+                    {
+                        Console.WriteLine("Il n'y a plus de bouteilles");
+                        Console.WriteLine("Vous avez fabriquer " + produceBottles + "de bières ");
+                    }
+                    else
+                    {
+                        return produceBottles; 
+                    }
+                    
+                }
+            }
         }
     }
-
-    
-
-
-
+}

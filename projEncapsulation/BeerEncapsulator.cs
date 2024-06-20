@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -31,7 +32,11 @@ namespace projEncapsulation
             return BeerVolume;
         }
 
-        
+        public static int GetBouteillesVoulu(int wantedBottles)
+        {
+            int bouteilleVoulu = wantedBottles;
+            return bouteilleVoulu;
+        }
 
         public int GetAvalaibleBottles(int avalaibleBottles)
         {
@@ -67,17 +72,38 @@ namespace projEncapsulation
             return avalaibleBottles;
 
         }
-
-        public ProduceEncapsulatedBeer()
+        int counter = 0;
+        public int ProduceEncapsulatedBeer(int bouteilleVoulu)
         {
-            for()
+            for (int i = 0, i <  bouteilleVoulu, i++)
+            {
                 AdBeer();
                 CapsulesMoins();
                 BottleMoins();
-             }
-            while (true);
-            
-        }
+                counter++;
+                if (AdBeer() < 0.33)
+                {
+                    Console.WriteLine("Il n'a plus assez de bière");
+                    Console.WriteLine("Vous avez fabriquer " + counter + "de bières ");
+                    return counter;
+                }
+                else if (CapsulesMoins() == 0)
+                {
+                    Console.WriteLine("Il n'y a plus de capsules. ");
+                    Console.WriteLine("Vous avez fabriquer " + counter + "de bières ");
+                    return counter;
+                }
+                else if (BottleMoins() == 0)
+                        {
+                    Console.WriteLine("Il n'y a plus de bouteilles");
+                    Console.WriteLine("Vous avez fabriquer " + counter + "de bières ");
+                    return counter;
+                        }
+                else
+                {
+                    Console.WriteLine("Il n'a pas assez d'éléments pour la fabrication. ");
+                    return 0;
+                }
     }
 
 }

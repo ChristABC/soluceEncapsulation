@@ -12,34 +12,71 @@ namespace projEncapsulation
         private double avalaibleBeerVolume;
         private int avalaibleBottles;
         private int avalaibleCapsules;
-        public BeerEncapsulator(int _avalaibleBottles, double _avalaibleBeerVolume, int _avalaibleCapsules)
+        public double volumeBeer;
+        public int caps;
+        public int bottlesVide;
+        public int fullBottles;
+        public BeerEncapsulator(int _avalaibleBottles, double _avalaibleBeerVolume, int _avalaibleCapsules, int wantBottles)
         {
             double avalaibleBeerVolume=_avalaibleBeerVolume;
             int avalaibleBottles=_avalaibleBottles;
             int avalaibleCapsules=_avalaibleCapsules;
-        }
-        public double GetAvalableBeerVolume()
-        {
-            return avalaibleBeerVolume;
-        }
-        public int GetAvailableBottles()
-        {
-            return avalaibleBottles;
+            int wantedBottles =wantBottles;
         }
 
+       
+        public static double GetAvalaibleBeerVolume(double avalaibleBeerVolume)
+        {
+            double BeerVolume = avalaibleBeerVolume;
+            return BeerVolume;
+        }
+
+        
+
+        public int GetAvalaibleBottles(int avalaibleBottles)
+        {
+            int bottlesVide = avalaibleBottles;
+            return bottlesVide;
+        }
+
+        
+        public int GetAvalaibleCapsules(int avalaibleCapsules)
+        {
+            int caps = avalaibleCapsules;
+            return caps;
+        }
+       
         public double AdBeer()
         {
-            Console.WriteLine("Combien de volumes en centililtres, voulez vous ?");
-            string stringX = Console.ReadLine();
-            double x = double.Parse(stringX);
-            avalaibleBeerVolume = Math.Round(avalaibleBeerVolume + x * 0.33, 2);
+            volumeBeer = volumeBeer - 0.33;
+            volumeBeer = Math.Round(volumeBeer, 2);
             return avalaibleBeerVolume;
+            
         }
 
-        public void ProduceEncapsulatedBeer()
+        public int BottleMoins()
         {
-            //Maintenant le plus dire et a faire
-            //une partie mise en bouteille et encapule
+            caps = caps - 1;           
+            return avalaibleBottles;
+            
+        }
+
+        public int CapsulesMoins()
+        {
+            caps = avalaibleBottles - 1;
+            return avalaibleBottles;
+
+        }
+
+        public ProduceEncapsulatedBeer()
+        {
+            for()
+                AdBeer();
+                CapsulesMoins();
+                BottleMoins();
+             }
+            while (true);
+            
         }
     }
 

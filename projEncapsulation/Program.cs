@@ -10,7 +10,7 @@ class MainProgram
     public static void Main(string[] args)
     {
 
-        Console.Write("Veuillez entrer le nombre de litres. ");
+        Console.Write("Veuillez entrer le volume en centilitres. ");
         decimal volumeBeer = Convert.ToDecimal(Console.ReadLine());
         
         Console.WriteLine(" Veuillez entrer le nombre de bouteilles vides.  ");
